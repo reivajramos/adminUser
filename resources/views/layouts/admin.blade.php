@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -119,7 +120,7 @@
 
                             <div class="mx-auto sm:px-6 lg:px-8">
                                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                    <div class="bg-white border-b border-gray-200">
+                                    <div class="bg-white">
                                     <!-- marco del slot -->
                                     {{ $slot }}
                                     <!-- fin del marco del slot -->
