@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin', [App\Http\Controllers\ViewAdminController::class, 'index'])->name('admin');
 Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class);
+Route::resource('categorias', App\Http\Controllers\CategoriaController::class);
 Route::get('/users', [App\Http\Controllers\ViewUsersController::class, 'index'])->name('users');
 
 

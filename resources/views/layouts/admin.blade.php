@@ -84,6 +84,10 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="{{ route('categorias.index') }}" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-bar-chart-steps"></i> <span class="ms-1 d-none d-sm-inline">Categorias</span> </a>
+                        </li>
+                        <li>
                             <a href="{{ route('proveedores.index') }}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Proveedores</span> </a>
                         </li>
@@ -92,7 +96,7 @@
                             <a class="nav-link px-0 align-middle" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                             <i class="fs-4  bi-arrow-90deg-left"></i>  {{ __('  Logout') }}
+                             <i class="fs-4  bi-arrow-90deg-left"></i>  {{ __('  Salir') }}
                              </a>
 
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
