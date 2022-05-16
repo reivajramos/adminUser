@@ -1,37 +1,34 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ $proveedore->name ?? 'Show Proveedore' }}
-@endsection
-
-@section('content')
+<x-admin>
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-info text-center">
                         <div class="float-left">
-                            <span class="card-title">Show Proveedore</span>
+                            <h3><span class="card-title">Datos del Proveedor</span></h3>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('admin.index') }}"> Back</a>
-                        </div>
+                        
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $proveedore->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Descrip:</strong>
+                            <strong>descripcion:</strong>
                             {{ $proveedore->descrip }}
                         </div>
 
                     </div>
-                </div>
+                    </div>   
+                    <div class="float-right d-grid gap-2">
+                        <a class="btn btn-primary" href="{{ route('proveedores.index') }}"> Volver</a>
+                    </div>
+
+                
             </div>
         </div>
     </section>
-@endsection
+</x-admin>

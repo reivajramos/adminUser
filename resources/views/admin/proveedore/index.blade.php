@@ -1,10 +1,5 @@
-@extends('layouts.app')
+<x-admin>
 
-@section('template_title')
-    Proveedore
-@endsection
-
-@section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -13,12 +8,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Proveedore') }}
+                                {{ __('Proveedores') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('proveedores.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Nuevo Proveedor') }}
                                 </a>
                               </div>
                         </div>
@@ -51,9 +46,9 @@
 											<td>{{ $proveedore->descrip }}</td>
 
                                             <td>
-                                                <form action="{{ route('admin.destroy',$proveedore->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admin.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('admin.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('proveedores.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -70,4 +65,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+</x-admin>
