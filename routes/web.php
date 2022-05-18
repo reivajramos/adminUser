@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin', [App\Http\Controllers\ViewAdminController::class, 'index'])->name('admin');
 Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class);
 Route::resource('categorias', App\Http\Controllers\CategoriaController::class);
+Route::resource('productos', App\Http\Controllers\ProductoController::class);
 Route::get('/users', [App\Http\Controllers\ViewUsersController::class, 'index'])->name('users');
 
 
