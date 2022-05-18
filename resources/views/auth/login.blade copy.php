@@ -3,25 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-
-            <div class="card">
-                <div class="card_content">
-                  <h2 class="card-header text-center text-uppercase text-white bg-primary">Instrucciones</h2>
-                  <p class="p-2">Para acceder al sistema eliga un rol, cada rol tiene permisos distintos sobre la los datos que posee el sitio</p>
-                  <h5 class="card-header"></h5>
-                  <h5 class="card-header text-center bg-info text-white">ADMINISTRADOR</h5>
-                  <p class="card_text p-2">Email Addres: admin@admin.com</p>
-                  <p class="card_text p-2">Password: admin@admin.com</p>
-                  <h5 class="card-header"></h5>
-                  <h5 class="card-header text-center bg-info text-white">USUARIO</h5>
-                  <p class="card_text p-2">Email Addres: cliente1@cliente1.com</p>
-                  <p class="card_text p-2">Password: cliente1@cliente1.com</p>                
-                </div>
-              </div>
-
-        </div>
-
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
