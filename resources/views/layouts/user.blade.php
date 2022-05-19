@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 <body>
     <div id="app">
@@ -39,13 +41,19 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase" href="{{ route('pedidos.index') }}">{{ __('   pedidos') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase" href="{{ route('pedidos.create') }}">{{ __('   crear pedidos') }}</a>
+                            </li>
                
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item dropdown" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -64,7 +72,7 @@
         </nav>
 
            <!-- Contenido -->
-           <div class="flex-auto w-full bg-slate-50">
+           <div class="flex-auto w-full bg-slate-50 p-5">
 
 
 

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::defaultStringLength(125);
         Schema::create('users', function (Blueprint $table) {
+            $table->engine="InnoDB";
             $table->id();
             $table->string('name');
             $table->string('email')->unique();

@@ -11,7 +11,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{ __('Hola Usuario') }}
+                        {{ __('Holas Usuario') }}
                     </div>
                 </div>
             </div>
