@@ -22,7 +22,7 @@ class ProductoController extends Controller
     {
         $productos = Producto::paginate();
 
-        $proveedor = Proveedore::pluck('descripcion', 'id');
+        $proveedor = Proveedore::pluck('name', 'id');
 
         $categoria = Categoria::pluck('name', 'id');
 

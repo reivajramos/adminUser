@@ -15,8 +15,8 @@
                   <p class="card_text p-2">Password: admin@admin.com</p>
                   <h5 class="card-header"></h5>
                   <h5 class="card-header text-center bg-info text-white">USUARIO</h5>
-                  <p class="card_text p-2">Email Addres: cliente1@cliente1.com</p>
-                  <p class="card_text p-2">Password: cliente1@cliente1.com</p>                
+                  <p class="card_text p-2">Email Addres: cliente1@cliente.com</p>
+                  <p class="card_text p-2">Password: cliente1@cliente.com</p>                
                 </div>
               </div>
 

@@ -41,17 +41,18 @@ class PedidoController extends Controller
     {
         $pedido = new Pedido();
 
-        $producto = DB::select('SELECT *
+       $producto = DB::select('SELECT *
                     FROM productos
                     WHERE NOT EXISTS (
                     SELECT *
                     FROM pedidos
                     WHERE pedidos.users_id = ?
-                    AND pedidos.productos_id = productos.id)', [Auth::id()]);
+                    AND pedidos.productos_id = productos.id)', [Auth::id()])->paginate();
 
         $users = User::pluck('name', 'id');
-
-        return view('users.pedido.create', compact('pedido', 'producto', 'users'));
+       
+        return view('users.pedido.create', compact('pedido', 'producto', 'users'))
+            ->with('i', (request()->input('page', 1) - 1) * $producto->perPage());
     }
 
     /**
@@ -66,7 +67,7 @@ class PedidoController extends Controller
 
         $pedido = Pedido::create($request->all());
 
-        return redirect()->route('pedidos.index')
+        return redirect()->route('pedidos.create')
             ->with('success', 'Pedido created successfully.');
     }
 

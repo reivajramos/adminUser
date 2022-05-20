@@ -1,38 +1,34 @@
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Presentacion</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+ @foreach ($producto as $product)
+      <tr>
+        <form method="POST" action="{{ route('pedidos.store') }}"  role="form" enctype="multipart/form-data">
+            @csrf
 
-
-
-<div class="box box-info padding-1">
-    <div class="box-body">
-        
-        <div class="form-group">
-            {{ Form::label('cantidad') }}
-            {{ Form::text('cantidad', $pedido->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}
-            {!! $errors->first('cantidad', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('fechapedido') }}
-            {{ Form::text('fechapedido', $pedido->fechapedido, ['class' => 'form-control' . ($errors->has('fechapedido') ? ' is-invalid' : ''), 'placeholder' => 'Fechapedido']) }}
-            {!! $errors->first('fechapedido', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('estado') }}
-            {{ Form::text('estado', $pedido->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
-            {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('productos_id') }}
-            {{ Form::text('productos_id', $pedido->productos_id, ['class' => 'form-control' . ($errors->has('productos_id') ? ' is-invalid' : ''), 'placeholder' => 'Productos Id']) }}
-            {!! $errors->first('productos_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('users_id') }}
-            {{ Form::text('users_id', $pedido->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Users Id']) }}
-            {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
-    </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Agregar</button>
-    </div>
-</div>
-
+        <th>{{ ++$i }}</th>
+        {{ Form::hidden('productos_id', $product->id, $pedido->productos_id, ['class' => 'form-control' . ($errors->has('productos_id') ? ' is-invalid' : ''), 'placeholder' => 'Productos Id']) }}
+        <th scope="row">{{ $product->descripcion }}</th>
+        <td>{{ $product->presentacion }}</td>
+        <td>{{ ($product->precio_1 + $product->precio_2 + $product->precio_3)/3 }}</td>
+        <td>{{ Form::number('cantidad', $pedido->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad']) }}</td>
+        <td>{{ Form::hidden('fechapedido', now(),$pedido->fechapedido, ['class' => 'form-control' . ($errors->has('fechapedido') ? ' is-invalid' : ''), 'placeholder' => 'Fechapedido']) }}</td>
+        <td>{{ Form::hidden('estado','0', $pedido->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}</td>
+        <td>{{ Form::hidden('users_id', Auth::user()->id ,$pedido->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Users Id']) }}</td>
+        <td>    <div class="box-footer mt20">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </div></td>
+    </form>
+      </tr>
+      <tr>
+@endforeach
+    </tbody>
+  </table>

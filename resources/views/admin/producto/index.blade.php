@@ -50,17 +50,17 @@
 											<td>{{ $producto->descripcion }}</td>
 											<td>{{ $producto->especificacion }}</td>
 											<td>{{ $producto->presentacion }}</td>
-											<td>{{ number_format($producto->precio_1 + $producto->precio_2 + $producto->precio_3, 0, ",", ".") }}</td>
+											<td>{{ number_format(($producto->precio_1 + $producto->precio_2 + $producto->precio_3)/3, 0, ",", ".") }}</td>
 											<td>{{ $proveedor[$producto->proveedores_id] }}</td>
 											<td>{{ $categoria[$producto->categorias_id] }}</td>
 
                                             <td>
                                                 <form action="{{ route('productos.destroy',$producto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('productos.edit',$producto->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('productos.edit',$producto->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

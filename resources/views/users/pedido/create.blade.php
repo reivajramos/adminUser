@@ -10,14 +10,14 @@
                         <span class="card-title">Create Pedido</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('pedidos.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                        
 
                             @include('users.pedido.formPedidos')
 
-                        </form>
+                        
                     </div>
                 </div>
+                {!! $producto->links() !!}
             </div>
         </div>
     </section>
