@@ -11,6 +11,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                       
                         {{ __('Holas Usuario') }}
                     </div>
                 </div>

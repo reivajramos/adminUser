@@ -14,7 +14,7 @@
         <form method="POST" action="{{ route('pedidos.store') }}"  role="form" enctype="multipart/form-data">
             @csrf
 
-        <th>{{ ++$i }}</th>
+        <th>{{ ++$i}}</th>
         {{ Form::hidden('productos_id', $product->id, $pedido->productos_id, ['class' => 'form-control' . ($errors->has('productos_id') ? ' is-invalid' : ''), 'placeholder' => 'Productos Id']) }}
         <th scope="row">{{ $product->descripcion }}</th>
         <td>{{ $product->presentacion }}</td>

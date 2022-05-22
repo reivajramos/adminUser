@@ -17,10 +17,11 @@
                         
                     </div>
                 </div>
-                {!! $producto->links() !!}
+             
+        {!! $producto->links() !!}
+             
             </div>
         </div>
     </section>
 </x-user>
 
-{{ dd($producto) }}

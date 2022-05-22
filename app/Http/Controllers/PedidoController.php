@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\User;
 use App\Models\Producto;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Auth;
@@ -41,13 +42,14 @@ class PedidoController extends Controller
     {
         $pedido = new Pedido();
 
-       $producto = DB::select('SELECT *
-                    FROM productos
-                    WHERE NOT EXISTS (
-                    SELECT *
-                    FROM pedidos
-                    WHERE pedidos.users_id = ?
-                    AND pedidos.productos_id = productos.id)', [Auth::id()])->paginate();
+        $producto =  DB::table('productos')
+                    ->whereNotExists(function ($query) {
+                         $query->select("*")
+                             ->from('pedidos')
+                             ->where('pedidos.users_id', [Auth::id()])
+                             ->where('pedidos.productos_id','productos.id');
+                    })
+                    ->paginate();
 
         $users = User::pluck('name', 'id');
        

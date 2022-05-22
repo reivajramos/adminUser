@@ -3,9 +3,9 @@
 @section('content')
 
                     @if(Auth::user()->hasRole('admin'))
-                    <script>window.location = "/admin2/public/admin";</script>
+                    <script>window.location = "/adminUser/public/admin";</script>
                     @else
-                    <script>window.location = "/admin2/public/users";</script>
+                    <script>window.location = "/adminUser/public/users";</script>
                     @endif
                     
                 

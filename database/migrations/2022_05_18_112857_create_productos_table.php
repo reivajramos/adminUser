@@ -26,8 +26,8 @@ class CreateProductosTable extends Migration
             $table->bigInteger('proveedores_id')->unsigned();
             $table->bigInteger('categorias_id')->unsigned();
             $table->timestamps();
-             $table->foreign('proveedores_id')->references('id')->on('proveedores')->onDelete('cascade');
-             $table->foreign('categorias_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('proveedores_id')->references('id')->on('proveedores')->onDelete('cascade');
+            $table->foreign('categorias_id')->references('id')->on('categorias')->onDelete('cascade');
         });
     }
 
