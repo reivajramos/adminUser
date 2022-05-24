@@ -8,6 +8,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Create Pedido</span>
+                        @include('users.buscar')
                     </div>
                     <div class="card-body">
                         
