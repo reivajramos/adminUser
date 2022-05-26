@@ -1,18 +1,24 @@
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+        <div class="justify-content-center">
+          
+                    <form action="{{route('pedidos.create')}}" method="get">
+                        <div class="form row">
 
-                    <div class="col-auto w-70">
-                    <label for="inputPassword2" class="visually-hidden">Password</label>
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                  </div>
-                  <div class="col-auto width:20%">
-                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
-                  </div>
 
-                </div>
+                                  <div class="col-8">
+                                    <input type="text" class="form-control" name="buscar" value="{{$buscar}}">
+                                  </div>
+                                  <div class="col-2">
+                                    <input type="submit" class="btn btn-primary" value="Buscar">
+                                  </div>
+                        </div>
+                    </form>
+        
+     
             </div>
-        </div>
+
     </div>
+
+
+

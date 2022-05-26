@@ -42,14 +42,15 @@ class PedidoController extends Controller
     {
         $pedido = new Pedido();
 
-        $producto =  DB::table('productos')
-                    ->whereNotExists(function ($query) {
-                         $query->select("*")
-                             ->from('pedidos')
-                             ->where('pedidos.users_id', [Auth::id()])
-                             ->where('pedidos.productos_id','productos.id');
-                    })
+        $producto = DB::table('productos')
+                    ->select('productos.id','productos.codigo_descripcion','productos.descripcion','productos.especificacion','productos.presentacion','productos.precio_1','productos.precio_2','productos.precio_3','productos.proveedores_id','productos.categorias_id')
+                    ->leftJoin('pedidos', 'pedidos.productos_id','productos.id')
+                    ->whereNull('pedidos.users_id')
+                    ->orwhereNotIn('pedidos.users_id',[Auth::id()])
                     ->paginate();
+           
+
+
 
         $users = User::pluck('name', 'id');
        
