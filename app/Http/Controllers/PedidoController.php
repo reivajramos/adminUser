@@ -38,23 +38,24 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $pedido = new Pedido();
+
+        $buscar = trim($request->get('buscar'));
 
         $producto = DB::table('productos')
                     ->select('productos.id','productos.codigo_descripcion','productos.descripcion','productos.especificacion','productos.presentacion','productos.precio_1','productos.precio_2','productos.precio_3','productos.proveedores_id','productos.categorias_id')
                     ->leftJoin('pedidos', 'pedidos.productos_id','productos.id')
+                    ->where('productos.codigo_descripcion','LIKE', '%'.$buscar.'%')
                     ->whereNull('pedidos.users_id')
                     ->orwhereNotIn('pedidos.users_id',[Auth::id()])
                     ->paginate();
            
 
-
-
         $users = User::pluck('name', 'id');
        
-        return view('users.pedido.create', compact('pedido', 'producto', 'users'))
+        return view('users.pedido.create', compact('pedido', 'producto', 'users', 'buscar'))
             ->with('i', (request()->input('page', 1) - 1) * $producto->perPage());
     }
 
