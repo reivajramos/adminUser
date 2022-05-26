@@ -11,8 +11,8 @@
                             </span>
                             <!--
                              <div class="float-right">
-                                <a href="{{ route('pedidos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                <a href="{{ route('pedidos.estado') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Confirmar Pedido') }}
                                 </a>
                               </div>
                             -->
@@ -33,9 +33,7 @@
                                         
 										<th>Cantidad</th>
 										<th>Fechapedido</th>
-										<th>Estado</th>
-										<th>Productos Id</th>
-										<th>Users Id</th>
+										<th>Descripcion</th>
 
                                         <th></th>
                                     </tr>
@@ -47,17 +45,15 @@
                                             
 											<td>{{ $pedido->cantidad }}</td>
 											<td>{{ $pedido->fechapedido }}</td>
-											<td>{{ $pedido->estado }}</td>
 											<td>{{ $producto[$pedido->productos_id] }}</td>
-											<td>{{ $users[$pedido->users_id] }}</td>
 
                                             <td>
                                                 <form action="{{ route('pedidos.destroy',$pedido->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('pedidos.show',$pedido->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('pedidos.edit',$pedido->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('pedidos.show',$pedido->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('pedidos.edit',$pedido->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

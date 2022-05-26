@@ -134,4 +134,21 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido deleted successfully');
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Pedido $pedido
+     * @return \Illuminate\Http\Response
+     */
+    public function estado(Request $request, Pedido $pedido)
+    {
+        request()->validate(Pedido::$rules);
+
+        $pedido->update($request->all());
+
+        return redirect()->route('pedidos.index')
+            ->with('success', 'Pedidos Enviados con Exito');
+    }
 }

@@ -27,7 +27,7 @@
                             {{ $pedido->estado }}
                         </div>
                         <div class="form-group">
-                            <strong>Productos Id:</strong>
+                            <strong>Descripcion:</strong>
                             {{ $producto[$pedido->productos_id] }}
                         </div>
                         <div class="form-group">
