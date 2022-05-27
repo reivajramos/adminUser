@@ -19,3 +19,4 @@ Route::get('/users', [App\Http\Controllers\ViewUsersController::class, 'index'])
 /* users*/
 Route::resource('pedidos', App\Http\Controllers\PedidoController::class);
 
+

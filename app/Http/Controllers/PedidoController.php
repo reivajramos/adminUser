@@ -23,13 +23,40 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::paginate();
+        $pedidos = Pedido::where('estado', '0')->paginate();
 
         $producto = Producto::pluck('descripcion', 'id');
 
+        $costo1 = Producto::pluck('precio_1', 'id');
+        $costo2 = Producto::pluck('precio_2', 'id');
+        $costo3 = Producto::pluck('precio_3', 'id');
+
+        $cant1 = DB::table('pedidos')
+                ->where('pedidos.users_id',[Auth::id()])
+                ->sum('cantidad');
+
+        $C1 = DB::table('pedidos')
+                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
+                ->where('pedidos.users_id',[Auth::id()])
+                ->sum('productos.precio_1');
+       /* $C2 = DB::table('pedidos')
+                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
+                ->where('pedidos.users_id',[Auth::id()])
+                ->sum('productos.precio_2');
+        $C3 = DB::table('pedidos')
+                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
+                ->where('pedidos.users_id',[Auth::id()])
+                ->sum('productos.precio_3');
+
+        $costoTotal = (($C1+$C2+$C3));*/
+        $costoTotal = ($C1);
+
+
+        
+
         $users = User::pluck('name', 'id');
 
-        return view('users.pedido.index', compact('pedidos', 'producto','users'))
+        return view('users.pedido.index', compact('pedidos', 'producto','users','costo1','costo2','costo3', 'costoTotal'))
             ->with('i', (request()->input('page', 1) - 1) * $pedidos->perPage());
     }
 
@@ -109,17 +136,17 @@ class PedidoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Pedido $pedido
+     * @param  Pedido $pedido, Pedido $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedido $pedido)
+    public function update(Request $request)
     {
-        request()->validate(Pedido::$rules);
-
-        $pedido->update($request->all());
+        DB::table('pedidos')
+        ->where('users_id', [Auth::id()])
+        ->update(['estado' => 1]);
 
         return redirect()->route('pedidos.index')
-            ->with('success', 'Pedido updated successfully');
+        ->with('success', 'Su pedido sera procesado');
     }
 
     /**
@@ -133,22 +160,5 @@ class PedidoController extends Controller
 
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido deleted successfully');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Pedido $pedido
-     * @return \Illuminate\Http\Response
-     */
-    public function estado(Request $request, Pedido $pedido)
-    {
-        request()->validate(Pedido::$rules);
-
-        $pedido->update($request->all());
-
-        return redirect()->route('pedidos.index')
-            ->with('success', 'Pedidos Enviados con Exito');
     }
 }

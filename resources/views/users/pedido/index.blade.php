@@ -9,13 +9,16 @@
                             <span id="card_title">
                                 {{ __('Pedido') }}
                             </span>
-                            <!--
-                             <div class="float-right">
-                                <a href="{{ route('pedidos.estado') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Confirmar Pedido') }}
-                                </a>
-                              </div>
-                            -->
+                            <button type="submit" class="btn btn-info">{{ $costoTotal }}</button>
+                            <form method="POST" action="{{ route('pedidos.update', [Auth::id()]) }}"  role="form" enctype="multipart/form-data">
+                                {{ method_field('PATCH') }}
+                                @csrf
+                                <div class="box-footer mt20">
+                                    <button type="submit" class="btn btn-success">Procesar Pedido</button>
+                                </div>
+    
+                            </form>
+                     
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -33,7 +36,9 @@
                                         
 										<th>Cantidad</th>
 										<th>Fechapedido</th>
+										<th>Estado</th>
 										<th>Descripcion</th>
+										<th>Costo por item</th>
 
                                         <th></th>
                                     </tr>
@@ -45,18 +50,20 @@
                                             
 											<td>{{ $pedido->cantidad }}</td>
 											<td>{{ $pedido->fechapedido }}</td>
+											<td>{{ $pedido->estado }}</td>
 											<td>{{ $producto[$pedido->productos_id] }}</td>
+											<td>{{ number_format($pedido->cantidad * (($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3), 2, ',', '.')}}</td>
 
                                             <td>
                                                 <form action="{{ route('pedidos.destroy',$pedido->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('pedidos.show',$pedido->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('pedidos.edit',$pedido->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
