@@ -8,6 +8,7 @@ use App\Models\Producto;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use PDF;
 use Auth;
 
 /**
@@ -31,32 +32,10 @@ class PedidoController extends Controller
         $costo2 = Producto::pluck('precio_2', 'id');
         $costo3 = Producto::pluck('precio_3', 'id');
 
-        $cant1 = DB::table('pedidos')
-                ->where('pedidos.users_id',[Auth::id()])
-                ->sum('cantidad');
-
-        $C1 = DB::table('pedidos')
-                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
-                ->where('pedidos.users_id',[Auth::id()])
-                ->sum('productos.precio_1');
-       /* $C2 = DB::table('pedidos')
-                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
-                ->where('pedidos.users_id',[Auth::id()])
-                ->sum('productos.precio_2');
-        $C3 = DB::table('pedidos')
-                ->leftJoin('productos','productos.id', 'pedidos.productos_id')
-                ->where('pedidos.users_id',[Auth::id()])
-                ->sum('productos.precio_3');
-
-        $costoTotal = (($C1+$C2+$C3));*/
-        $costoTotal = ($C1);
-
-
-        
 
         $users = User::pluck('name', 'id');
 
-        return view('users.pedido.index', compact('pedidos', 'producto','users','costo1','costo2','costo3', 'costoTotal'))
+        return view('users.pedido.index', compact('pedidos', 'producto','users','costo1','costo2','costo3'))
             ->with('i', (request()->input('page', 1) - 1) * $pedidos->perPage());
     }
 
@@ -110,13 +89,13 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        $pedido = Pedido::find($id);
+        $producto = Producto::find($id);
 
-        $producto = Producto::pluck('descripcion', 'id');
+       // $producto = Producto::pluck('descripcion', 'id');
 
-        $users = User::pluck('name', 'id');
+       // $users = User::pluck('name', 'id');
 
-        return view('users.pedido.show', compact('pedido', 'producto', 'users'));
+        return view('users.pedido.show', compact('producto'));
     }
 
     /**
@@ -160,5 +139,15 @@ class PedidoController extends Controller
 
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido deleted successfully');
+    }
+
+    public function pdf()
+    {
+
+        $pdf = PDF::loadView('users.pedido.pdf');
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+      // return view('users.pedido.pdf');
     }
 }

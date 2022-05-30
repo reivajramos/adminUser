@@ -5,36 +5,41 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Pedido</span>
+                            <span class="card-title">Datos del Producto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('pedidos.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('pedidos.create') }}"> Volver</a>
                         </div>
                     </div>
-
+                    
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Cantidad:</strong>
-                            {{ $pedido->cantidad }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Fechapedido:</strong>
-                            {{ $pedido->fechapedido }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Estado:</strong>
-                            {{ $pedido->estado }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Descripcion:</strong>
-                            {{ $producto[$pedido->productos_id] }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Users Id:</strong>
-                            {{ $users[$pedido->users_id] }}
-                        </div>
-
+                    <table class="table">
+                        <thead class="table-dark">
+                          <tr>
+                            <td>Codigo</td>
+                            <td>Descripcion</td>
+                            <td>Especificacion</td>
+                            <td>Presentacion</td>
+                            <td>Primer precio referencial</td>
+                            <td>Segundo precio referencial</td>
+                            <td>Tercer precio referencial</td>
+                            <td>Costo Promedio</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr align="right">
+                                <td>{{ ($producto->codigo_descripcion) }}</td>
+                                <td>{{ ($producto->descripcion) }}</td>
+                                <td>{{ ($producto->especificacion) }}</td>
+                                <td>{{ ($producto->presentacion) }}</td>
+                                <td>{{ ($producto->precio_1) }}</td>
+                                <td>{{ ($producto->precio_2) }}</td>
+                                <td>{{ ($producto->precio_3) }}</td>
+                                <td>{{ ($producto->precio_1 + $producto->precio_2 + $producto->precio_3)/3 }}</td>
+                              </tr>
+                     
+                        </tbody>
+                      </table>
                     </div>
                 </div>
             </div>

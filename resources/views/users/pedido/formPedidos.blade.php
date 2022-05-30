@@ -24,7 +24,9 @@
         <td>{{ Form::hidden('estado','0', $pedido->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}</td>
         <td>{{ Form::hidden('users_id', Auth::user()->id ,$pedido->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Users Id']) }}</td>
         <td>    <div class="box-footer mt20">
-            <button type="submit" class="btn btn-primary">Agregar</button>
+          <a class="btn btn-sm btn-primary" href="{{ route('pedidos.show',$product->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+            <button type="submit" class="btn btn-sm btn-success">Agregar</button>
+
         </div></td>
     </form>
       </tr>

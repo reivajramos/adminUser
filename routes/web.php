@@ -18,5 +18,6 @@ Route::get('/users', [App\Http\Controllers\ViewUsersController::class, 'index'])
 
 /* users*/
 Route::resource('pedidos', App\Http\Controllers\PedidoController::class);
+Route::get('pdf', [App\Http\Controllers\PedidoController::class, 'pdf'])->name('users.pedido.pdf');
 
 
