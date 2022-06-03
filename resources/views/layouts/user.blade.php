@@ -42,6 +42,9 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                             <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase" href="{{ route('users.pedido.pdf') }}">{{ __('   Solicitudes Remitidas       ') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white text-uppercase" href="{{ route('pedidos.index') }}">{{ __('   pedidos') }}</a>
                             </li>
                             <li class="nav-item">

@@ -88,5 +88,8 @@ return array (
     'normal' => $fontDir . '/font_awesome_5_free_normal_1e4eb65c8909b692fa93ec104b292da7',
     '900' => $fontDir . '/font_awesome_5_free_900_7a391bfaa5a3bae95b80e593a78c65b9',
   ),
+  'glyphicons halflings' => array(
+    'normal' => $fontDir . '/glyphicons_halflings_normal_4bf4c90600ef2617211b8a7969a7b830',
+  ),
 );
 }; ?>

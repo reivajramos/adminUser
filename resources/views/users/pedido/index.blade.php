@@ -9,11 +9,6 @@
                             <span id="card_title">
                                 {{ __('Pedido') }}
                             </span>
-
-                            
-                            <form method="GET" action="{{ route('users.pedido.pdf') }}">
-                                    <button type="submit" class="btn btn-success">Generar PDF</button>
-                            </form>
                            
                             <form method="POST" action="{{ route('pedidos.update', [Auth::id()]) }}"  role="form" enctype="multipart/form-data">
                                 {{ method_field('PATCH') }}
@@ -90,7 +85,7 @@
                                     <td></td>
                                     <td></td>
                                     <th scope="row">{{ number_format($total, 2, ',', '.') }}</th>
-                                    </tr>
+                                </tr>
                             </table>
                         </div>
                     </div>
