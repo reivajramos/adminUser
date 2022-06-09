@@ -20,6 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- StylesDatatables -->
+    @yield('linkExternos')
 </head>
 <body>
     <div id="app">
@@ -41,6 +43,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase" href="{{ route('users') }}">{{ __('Inicio       ') }}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white text-uppercase" href="{{ route('users.pedido.pdf') }}">{{ __('   Solicitudes Remitidas       ') }}</a>
                             </li>

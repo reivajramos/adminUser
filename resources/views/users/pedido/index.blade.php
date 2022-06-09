@@ -14,7 +14,7 @@
                                 {{ method_field('PATCH') }}
                                 @csrf
                                 <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-success">Procesar Pedido</button>
+                                    <button type="submit" class="btn btn-success">Remitir Solicitud</button>
                                 </div>
     
                             </form>
@@ -31,12 +31,11 @@
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
-                                    <tr  align="right">
+                                    <tr align="right">
                                         <th>No</th>
                                         
 										<th>Cantidad</th>
-										<th>Costo por Producto</th>
-										<th>Fecha del Pedido</th>									
+										<th>Costo por Producto</th>								
 										<th>Descripcion</th>
 										<th>Total por Producto</th>
 
@@ -50,18 +49,17 @@
                                     @endphp
 
                                     @foreach ($pedidos as $pedido)
-                                        <tr align="right">
-                                            <td>{{ ++$i }}</td>
+                                        <tr>
+                                            <td align="right">{{ ++$i }}</td>
                                             
-											<td>{{ $pedido->cantidad }}</td>
-                                            <td>{{ number_format((($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3), 2, ',', '.')}}</td>
-											<td>{{ $pedido->fechapedido }}</td>
-											<td>{{ $producto[$pedido->productos_id] }}</td>
+											<td align="right">{{ $pedido->cantidad }}</td>
+                                            <td align="right">{{ number_format((($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3), 2, ',', '.')}}</td>
+											<td>{{ substr($producto[$pedido->productos_id], 0, 30)  }}</td>
                                             @php
                                                 $totalCantidad = $totalCantidad +  $pedido->cantidad;
                                                 $total = $total + ($pedido->cantidad * (($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3));
                                             @endphp
-											<td>{{ number_format($pedido->cantidad * (($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3), 2, ',', '.')}}</td>
+											<td align="right">{{ number_format($pedido->cantidad * (($costo1[$pedido->productos_id] + $costo2[$pedido->productos_id] + $costo3[$pedido->productos_id])/3), 2, ',', '.')}}</td>
 										
 											
 
