@@ -3,6 +3,7 @@
       <tr>
         <th scope="col" width="10">#</th>
         <th scope="col">Descripcion</th>
+        <th scope="col">Especificacion</th>
         <th scope="col">Presentacion</th>
         <th scope="col">Costo</th>
         <th scope="col" width="10">Cantidad</th>
@@ -16,8 +17,9 @@
 
         <td>{{ ++$i}}</td>{{ Form::hidden('productos_id', $product->id, $pedido->productos_id, ['class' => 'form-control' . ($errors->has('productos_id') ? ' is-invalid' : ''), 'placeholder' => 'Productos Id']) }}
         <td>{{ substr($product->descripcion, 0, 30) }}</td>
+        <td>{{ $product->especificacion }}</td>
         <td>{{ $product->presentacion }}</td>
-        <td align="right">{{ ($product->precio_1 + $product->precio_2 + $product->precio_3)/3 }}</td>
+        <td align="right">{{ number_format((($product->precio_1 + $product->precio_2 + $product->precio_3)/3), 2, ',', '.')}}</td>
         <td>{{ Form::number('cantidad', $pedido->cantidad, ['class' => 'form-control' . ($errors->has('cantidad') ? ' is-invalid' : ''), 'placeholder' => '0']) }}</td>
         {{ Form::hidden('fechapedido', now(),$pedido->fechapedido, ['class' => 'form-control' . ($errors->has('fechapedido') ? ' is-invalid' : ''), 'placeholder' => 'Fechapedido']) }}
         {{ Form::hidden('estado','0', $pedido->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}

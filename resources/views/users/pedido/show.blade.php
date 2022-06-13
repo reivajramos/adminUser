@@ -36,7 +36,7 @@
                             <div class="tab-pane fade" id="nav-preferencial" role="tabpanel" aria-labelledby="nav-preferencial-tab">
                                 <table class="table table-responsive">
                                     <tr>
-                                        <th scope="col">Prmier Costo Referencial</th>
+                                        <th scope="col">Primer Costo Referencial</th>
                                         <th scope="col">Segundo Costo Referencial</th>
                                         <th scope="col">Tercer Costo Referencial</th>
                                         <th scope="col">Costo Promedio Referencial</th>
