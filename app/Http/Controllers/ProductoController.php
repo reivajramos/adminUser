@@ -20,14 +20,17 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate();
+        $i = 0;
+
+        $productos = Producto::all();
 
         $proveedor = Proveedore::pluck('name', 'id');
 
         $categoria = Categoria::pluck('name', 'id');
 
-        return view('admin.producto.index', compact('productos', 'proveedor', 'categoria'))
-            ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
+        return view('admin.producto.index', compact('productos', 'proveedor', 'categoria','i'));
+        // return view('admin.producto.index', compact('productos', 'proveedor', 'categoria'))
+        //     ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 
     /**

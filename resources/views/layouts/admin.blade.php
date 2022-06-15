@@ -20,9 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- StylesExternos -->
+    @yield('linkExternos')
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow: hidden">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -65,10 +67,13 @@
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>-->
+                        </li>-->
+                        <li>
                             <a href="{{ route('productos.index') }}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Productos</span> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('usuarios.index') }}">{{ __('Usuarios') }}</a>
                         </li>
                         <li>
                             <a href="{{ route('categorias.index') }}" class="nav-link px-0 align-middle">
@@ -77,6 +82,10 @@
                         <li>
                             <a href="{{ route('proveedores.index') }}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Proveedores</span> </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('verpedidos.index') }}" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Pedidos</span> </a>
                         </li>
                         <li>
 

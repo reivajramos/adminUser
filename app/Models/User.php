@@ -20,7 +20,10 @@ class User extends Authenticatable
      * 
      * 
      */
-  
+    static $rules = [
+		'name' => 'required',
+		'email' => 'required',
+    ];
 
 
     protected $fillable = [

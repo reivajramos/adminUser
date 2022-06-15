@@ -4082,7 +4082,7 @@ textarea.form-control-lg {
   padding: 0.25rem 0.75rem;
   font-size: 1.125rem;
   line-height: 1;
-  background-color: #f0f0f0;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: box-shadow 0.15s ease-in-out;
@@ -7483,6 +7483,7 @@ textarea.form-control-lg {
 .py-3 {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
+  width: 80%;
 }
 
 .py-4 {

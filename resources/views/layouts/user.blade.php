@@ -20,13 +20,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <!-- StylesDatatables -->
+    <!-- StylesExternos -->
     @yield('linkExternos')
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
-            <div class="container ">
+            <div class="container">
                 <a class="navbar-brand  text-white" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
